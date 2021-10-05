@@ -22,7 +22,7 @@ pipelineJob('T1') {
                         url('git@github.com:ragazzid/jenkins.git')
                         credentials('k8s-ssh')
                     }
-                    branches('*/main')
+                    branches('*/master')
                 }
             }
             scriptPath('Jenkinsfile')
