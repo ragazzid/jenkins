@@ -1,0 +1,31 @@
+#!/usr/bin/env groovy
+
+pipelineJob('T2') {
+    displayName('T2')
+
+    logRotator {
+        numToKeep(10)
+        daysToKeep(30)
+    }
+
+    configure { project ->
+        project / 'properties' / 'org.jenkinsci.plugins.workflow.job.properties.DurabilityHintJobProperty' {
+            hint('PERFORMANCE_OPTIMIZED')
+        }
+    }
+
+    definition {
+        cpsScm {
+            scm {
+                git {
+                    remote {
+                        url('git@github.com:ragazzid/jenkins.git')
+                        credentials('k8s-ssh')
+                    }
+                    branches('*/main')
+                }
+            }
+            scriptPath('Jenkinsfile')
+        }
+    }
+}
