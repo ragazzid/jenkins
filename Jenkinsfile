@@ -16,9 +16,9 @@ podTemplate(label: label,
                 sh 'echo "hello world"'
             }
         }
-		stage('Domir por 10 min') {
+		stage('Dormir por 10 min') {
             container('alpine') {
-                sh 'wait 600'
+                sh 'sleep 600'
             }
         }
     }
