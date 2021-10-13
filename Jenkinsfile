@@ -18,7 +18,7 @@ podTemplate(label: label,
         }
 		stage('Dormir por 10 min') {
             container('alpine') {
-                sh 'sleep 600'
+                sh 'sleep 300'
             }
         }
     }
